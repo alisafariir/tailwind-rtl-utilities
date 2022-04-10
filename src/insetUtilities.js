@@ -4,28 +4,10 @@ module.exports = (theme) => {
   const generators = [
     ([modifier, size]) => ({
       [nameClass('start', modifier)]: {
-        right: size,
+        insetInlineStart: size,
       },
       [nameClass('end', modifier)]: {
-        left: size,
-      },
-      [nameClass('end', modifier)]: {
-        right: size,
-      },
-      [nameClass('start', modifier)]: {
-        left: size,
-      },
-      [nameClass('-start', modifier)]: {
-        right: -size,
-      },
-      [nameClass('-end', modifier)]: {
-        left: -size,
-      },
-      [nameClass('-end', modifier)]: {
-        right: -size,
-      },
-      [nameClass('-start', modifier)]: {
-        left: -size,
+        insetInlineEnd: size,
       },
     }),
   ];
