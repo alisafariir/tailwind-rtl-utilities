@@ -3,33 +3,19 @@ const nameClass = require('./util/nameClass.js');
 module.exports = (theme) => {
   const generators = [
     ([modifier, size]) => ({
-      [nameClass('start', modifier)]: {
+      ['[dir="rtl"] ' + nameClass('start', modifier)]: {
         right: size,
       },
-      [nameClass('end', modifier)]: {
+      ['[dir="rtl"] ' + nameClass('end', modifier)]: {
         left: size,
       },
-      [nameClass('end', modifier)]: {
+      ['[dir="ltr"] ' + nameClass('end', modifier)]: {
         right: size,
       },
-      [nameClass('start', modifier)]: {
+      ['[dir="ltr"] ' + nameClass('start', modifier)]: {
         left: size,
-      },
-      [nameClass('-start', modifier)]: {
-        right: -size,
-      },
-      [nameClass('-end', modifier)]: {
-        left: -size,
-      },
-      [nameClass('-end', modifier)]: {
-        right: -size,
-      },
-      [nameClass('-start', modifier)]: {
-        left: -size,
       },
     }),
   ];
-  return generators.flatMap((generator) =>
-    Object.entries(theme('inset')).flatMap(generator)
-  );
+  return generators.flatMap(generator => Object.entries(theme('inset')).flatMap(generator));
 };
